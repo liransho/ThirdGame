@@ -4,15 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class playerMove : MonoBehaviour
+public class Player : MonoBehaviour
 {
     Vector3 forward = new Vector3(0, 0, 1);
     Vector3 rotationRight = new Vector3(0, 30, 0);
     Vector3 rotationLeft = new Vector3(0, -30, 0);
-    public Rigidbody rb;
-    public Transform cube;
-    public float speed = 30f;
-    public Text score;
+
+    [SerializeField]
+    Rigidbody rb;
+    [SerializeField]
+    Transform cube;
+    [SerializeField]
+    float speed = 30f;
+    [SerializeField]
+    Text score;
 
     bool gameEnded = false;
     float restartDelay = 0.3f;
@@ -39,7 +44,7 @@ public class playerMove : MonoBehaviour
                 speed = maxSpeed;
             }
 
-            
+
         }
 
         if (Input.GetKey("d"))
@@ -83,19 +88,14 @@ public class playerMove : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-       
+
         if (collision.gameObject.tag == "Finish")
         {
-            Debug.Log("fsafsa");
+            Debug.Log("CONGRATULATIONS YOU HAVE FINISH THE RACE!!!!!");
             GameOver();
 
         }
-        if (collision.gameObject.tag == "grass")
-        {
-            Debug.Log("fsafsafssafasa");
-            GameOver();
-
-        }
+        
 
     }
 
